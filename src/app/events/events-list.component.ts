@@ -4,8 +4,12 @@ import { splitMatchedQueriesDsl } from '@angular/core/src/view/util';
 @Component({
     selector: 'events-list',
     template: ` <div> <h1>Upcoming Angular Technology Events</h1>
-        <hr>
-        <event-thumbnail [event] = "event1" ></event-thumbnail>
+        <hr>        
+        <event-thumbnail [event] = "event1" #thumbnail >
+        </event-thumbnail>      
+        <h4>{{thumbnail.someProperty}}</h4>
+        <button class="btn btn-primary" (click) = thumbnail.thumbnailChildComponentMethod()>Log me foo</button>        
+        
         </div>`
 })
 export class EventsListComponent{
@@ -22,5 +26,9 @@ export class EventsListComponent{
             country: 'Great Britain'
         }
     }
+
+    // eventClickHandler(data){
+    //     console.log('received' +data);
+    // }
 
 }
